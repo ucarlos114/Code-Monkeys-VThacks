@@ -23,3 +23,14 @@ determine algorithm for picking accessories:
 practice/set up writing to a csv file
 
 offer recommendations for cardio?
+
+
+questionnaire variables
+
+-how many weeks of program
+-[what day do you want to start] maybe
+-days per week
+-experience level 1-3
+-beginners 4 accessories, intermediate 6, advanced ?
+-include compounds (3x5 for beginners)
+-split ()
