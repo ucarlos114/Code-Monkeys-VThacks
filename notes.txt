@@ -1,0 +1,25 @@
+Ideas/notes
+
+for exercise groups, include specific muscle groups like
+biceps, triceps, shoulders,
+
+
+TODO:
+detemine how to store/retrieve exercises from 'database'
+-type of file to store, .txt, .csv
+
+encode and refine questionnaire, detemine variables that
+answers should affect, as well as how answers should be
+given (1-5 format, simple yes no to certain exercises, etc.)
+
+come up with default compound 
+splits for 3,4,5,(6) day programs
+
+determine algorithm for picking accessories:
+-random from each category, alternating every workout?
+-or based on preference of user?
+-rank accessories by experience level required?
+
+practice/set up writing to a csv file
+
+offer recommendations for cardio?
