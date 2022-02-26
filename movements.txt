@@ -1,0 +1,8 @@
+push
+bench press,db bench press,chest flys,db overhead press,lateral raises,
+pull
+deadlift,lat pulldowns,db rows,barbell rows,seated cable rows
+legs
+leg press,hack squat,quad extensions,hamstring curls,goblet squat,romanian deadlifts,lunges,split squats,hip thrusts
+compound
+squat,bench,deadlift
