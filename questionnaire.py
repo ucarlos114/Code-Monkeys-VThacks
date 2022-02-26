@@ -1,4 +1,5 @@
 
+    
 def get_digit(msg):
     while True:
         result = input(msg)
@@ -10,6 +11,7 @@ def get_digit(msg):
 
     return val
 
+    
 def questionnaire():
     name = input("Hello user! What is your name? ")
     print("")
@@ -29,6 +31,5 @@ def questionnaire():
     # limit based on experience
     print("How many days of the week would you like to work out?")
     days = get_digit("(Between 2 and " + str(exp + 3) + ") ")
-
-
+    
 questionnaire()
