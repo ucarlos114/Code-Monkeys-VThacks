@@ -2,6 +2,9 @@ Welcome to RoboTrainer!
 
 What's your name?
 
+What are your goals?
+----> Building Strength, Building Muscle, Weight Loss
+
 How many days a week would you like to workout?
 -Max 7 Min 1
 
@@ -9,3 +12,11 @@ How do you want your days broken up?
 - Prompt Push/Pull/Legs or Upper/Lower
 - Give quick explanation of each 
 
+Do you want to include compound lifts (Squat Bench Deadlift)?
+---> Do you want to train the compounds for strength or hypertrophy
+
+Are you a Beginner, Intermediate, or Advanced lifter?
+
+Would you like to include Cardio?
+---> How many days a week do you want to add Cardio?
+--------> How long do you want to spend of cardio? (enter in minutes)
