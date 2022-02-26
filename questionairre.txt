@@ -1,2 +1,11 @@
 Welcome to RoboTrainer!
 
+What's your name?
+
+How many days a week would you like to workout?
+-Max 7 Min 1
+
+How do you want your days broken up?
+- Prompt Push/Pull/Legs or Upper/Lower
+- Give quick explanation of each 
+
