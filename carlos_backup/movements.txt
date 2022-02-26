@@ -1,0 +1,23 @@
+push
+bench press,db bench press,chest flys,db overhead press,lateral raises,
+pull
+deadlift,lat pulldowns,db rows,barbell rows,seated cable rows
+legs
+leg press,hack squat,quad extensions,hamstring curls,goblet squat,romanian deadlifts,lunges,split squats,hip thrusts
+compound
+squat,bench,deadlift
+
+ALTERNATIVE (specific muscle group accessories)
+chest
+DB bench press,chest flies,incline press machine
+triceps
+rope pushdowns,skullcrushers,overhead cable extensions
+shoulders
+DB overhead press,lateral raises,rear delt flies
+biceps
+DB curls,EZ bar preacher curls,barbell curls, cable curls
+back
+lat pulldowns,high to low rows,DB rows,barbell rows,seated cable rows
+legs
+leg press,hack squat,quad extensions,hamstring curls,goblet squat,romanian deadlifts,lunges,split squats,hip thrusts
+
