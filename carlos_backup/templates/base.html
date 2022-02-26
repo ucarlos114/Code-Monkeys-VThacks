@@ -4,24 +4,13 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        body {
-            background-image: url("../static/fish.jpg");
-            background-size: 100%;
-        }
-    </style>
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-light bg-light">
-        <form class="container-fluid justify-content-start">
-            <button class="btn btn-outline-success me-2" type="button">Main button</button>
-            <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
-        </form>
-    </nav>
+<body style="background-color:maroon;">
     {% block content %}
     {% endblock %}
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
