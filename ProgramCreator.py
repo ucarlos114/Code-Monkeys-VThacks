@@ -109,7 +109,7 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                upLow.remove(0)#removes the first entry to continue
+                upLow.remove(i)#removes the selected entry to continue
 
             position += 2
     #Intermediate
@@ -138,7 +138,7 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                ppl.remove(0)#removes the first entry to continue
+                ppl.remove(i)#removes the first entry to continue
 
             position += 2
     #Advanced 
@@ -167,7 +167,7 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                muscleSplit.remove(0)#removes the first entry to continue
+                muscleSplit.remove(i)#removes the first entry to continue
 
             position += 2
 
