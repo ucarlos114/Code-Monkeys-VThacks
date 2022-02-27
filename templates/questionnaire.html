@@ -1,10 +1,36 @@
 {% extends "base.html" %}
 {% block title %}RoboTrainer{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">Lets Begin</h1>
+<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">Lets Begin With</h1>
+<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">A Short Questionnaire
+</h1>
 
+<br>
 <form method="get" action="{{ url_for('home') }}">
-    <button style="font-family: 'Courier New', Courier, monospace; position:absolute; left:50px;" type="submit"><b>Home</b></button>
+    <button style="font-family: 'Courier New', Courier, monospace; position:absolute; left:50px;"
+        type="submit"><b>Home</b></button>
+</form>
+
+<form style="text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    action="#" method="post">
+    <b>What's your name?</b>
+    <br>
+    <input type='text' name='name' />
+    <br>
+    <br>
+    <b>How many days of the week would you like to work out?</b>
+    <br>
+    <input type='text' name='days' />
+    <br>
+    <br>
+    <b>What's your level of experience when it comes to the gym?</b>
+    <br>
+    Enter 1 for beginner, 2 for intermediate, or 3 for advanced
+    <br>
+    <input type='text' name='exp' />
+    <br>
+    <br>
+    <input type='submit' value='Submit'/>
 </form>
 
 {% endblock %}
