@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}RoboTrainer{% endblock %}
+{% block content %}
+<h1 style="color:whitesmoke; font-family: Arial, Helvetica, sans-serif; text-align: center">Hello, I am RoboTrainer...</h1>
+<button type="button" style="font-family: Arial, Helvetica, sans-serif; position: relative; left:200px;">Begin</button>
+<button type="button" style="font-family: Arial, Helvetica, sans-serif; position: relative; left:200px;">About</button>
+<form method="get" action="{{ url_for('all') }}">
+    <button type="submit">Exercise Database</button>
+</form>
+{% endblock %}

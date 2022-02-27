@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 
@@ -18,20 +18,14 @@ class Accessories(db.Model):
     name = db.Column(db.String)
 
 @app.route('/')
-def index():
-    try:
-        accessories = Accessories.query.filter_by(muscle = 'legs').order_by(desc(Accessories.name)).all()
-        accessory_text = '<ul>'
-        for accessory in accessories:
-            accessory_text += '<li>' + accessory.name + ", " + accessory.muscle + '</li>'
-        accessory_text += '</ul>'
-        return accessory_text
-    except Exception as e:
-        error_text = "<p>The error:<br>" + str(e) + "</p>"
-        hed = '<h1>Something is broken.</h1>'
-        return hed + error_text
+def default():
+    return redirect(url_for("home"))
 
-@app.route('/<muscle>1')
+@app.route('/home')
+def home():
+        return render_template("main.html")
+
+@app.route('/<muscle>')
 def flex(muscle):
     try:
         accessories = Accessories.query.filter_by(muscle = muscle).order_by(desc(Accessories.name)).all()
@@ -45,15 +39,14 @@ def flex(muscle):
         hed = '<h1>Something is broken.</h1>'
         return hed + error_text
 
-@app.route('/<muscle>2')
-def pretty(muscle):
-    accessories = Accessories.query.filter_by(muscle = muscle).order_by(desc(Accessories.name)).all()
-    return render_template("index2.html")
-
-
-@app.route("/")
-def home():
-    return render_template("index2.html")
+@app.route('/allexercises')
+def all():
+    accessories = Accessories.query.order_by(Accessories.id).all()
+    accessory_text = '<ul>'
+    for accessory in accessories:
+        accessory_text += '<li>' + accessory.name + ", " + accessory.muscle + '</li>'
+    accessory_text += '</ul>'
+    return render_template("exercises.html")
 
 if (__name__ == "__main__"):
     app.run(debug=True)
