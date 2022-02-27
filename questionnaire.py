@@ -32,4 +32,5 @@ def questionnaire():
     print("How many days of the week would you like to work out?")
     days = get_digit("(Between 2 and " + str(exp + 3) + ") ")
     
-questionnaire()
+    
+#questionnaire()
