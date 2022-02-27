@@ -41,12 +41,15 @@ def flex(muscle):
 
 @app.route('/allexercises')
 def all():
-    accessories = Accessories.query.order_by(Accessories.id).all()
-    accessory_text = '<ul>'
-    for accessory in accessories:
-        accessory_text += '<li>' + accessory.name + ", " + accessory.muscle + '</li>'
-    accessory_text += '</ul>'
-    return render_template("exercises.html")
+    chests = Accessories.query.filter_by(muscle = "chest").order_by(Accessories.id).all()
+    shoulders = Accessories.query.filter_by(muscle = "shoulders").order_by(Accessories.id).all()
+    triceps = Accessories.query.filter_by(muscle = "triceps").order_by(Accessories.id).all()
+    backs = Accessories.query.filter_by(muscle = "back").order_by(Accessories.id).all()
+    biceps = Accessories.query.filter_by(muscle = "biceps").order_by(Accessories.id).all()
+    legs = Accessories.query.filter_by(muscle = "legs").order_by(Accessories.id).all()
+
+    return render_template("exercises.html", chests=chests, shoulders=shoulders, triceps=triceps,
+            backs=backs, biceps=biceps, legs=legs)
 
 if (__name__ == "__main__"):
     app.run(debug=True)
