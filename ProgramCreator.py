@@ -61,7 +61,7 @@ def prog_create(name, days, expLevel):
     workbook = xlsxwriter.Workbook(name+'.xlsx')
 
     #adds new worksheet
-    worksheet = workbook.add_worksheet()
+    worksheet = workbook.add_worksheet("Week 1")
 
     ######################################## FORMATS FOR WORKBOOK #################################################
     red = workbook.add_format({'color': 'red'})
@@ -87,9 +87,9 @@ def prog_create(name, days, expLevel):
     
     #Beginner
     if (int(expLevel) == 1):
-        worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
-        for i in range(int(days)):
-        
+       worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
+       for i in range(int(days)):
+            
             temp = i #just to calculate
             dayNum = i+1 #gets the day number
             weekNum = dayNum - temp #gets the week number
@@ -100,22 +100,18 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for exercises
 
-            for x in range(eRange):#picks and writes the 5 exercises
+            for x in range(5):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
+                tempList =[]
                 
-                #picks a random exercise from the muscle group obtained from upLow
-                for exercise in Accessories.query.filter_by(muscle = upLow[x]).order_by(Accessories.name).all():
-                    selection = random.choice(exercise.name)
+                #picks a random exercise from the muscle group obtained from ppl
+                for exercise in Accessories.query.filter_by(muscle = upLow[x + 5*i]).order_by(Accessories.name):
+                    tempList.append(exercise.name)
 
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
-                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs exercise name
+                worksheet.write('A'+str(position)+"",random.choice(tempList), movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                #upLow.remove(0)#removes the selected entry to continue
-                #upLow.remove(1)
-                #upLow.remove(2)
-                #upLow.remove(3)
-                #upLow.remove(4)
 
             position += 2
     #Intermediate
@@ -135,15 +131,20 @@ def prog_create(name, days, expLevel):
 
             for x in range(5):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
-                tempList =[]
+                tempList = []
+                chosenList = []
                 
                 #picks a random exercise from the muscle group obtained from ppl
                 for exercise in Accessories.query.filter_by(muscle = ppl[x + 5*i]).order_by(Accessories.name):
                     tempList.append(exercise.name)
-
+                
+                choice = random.choice(tempList)
+                while (choice not in chosenList):
+                    choice = random.choice(tempList)
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
-                worksheet.write('A'+str(position)+"",random.choice(tempList), movementFormat)#inputs exercise name
+                worksheet.write('A'+str(position)+"",choice, movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
+                chosenList.append(choice)
                 position +=1#updates position
 
             position += 2
@@ -151,7 +152,7 @@ def prog_create(name, days, expLevel):
     if(int(expLevel) == 3):
         worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
         for i in range(int(days)):
-        
+            
             temp = i #just to calculate
             dayNum = i+1 #gets the day number
             weekNum = dayNum - temp #gets the week number
@@ -162,24 +163,20 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for exercises
 
-            for x in range(eRange):#picks and writes the 5 exercises
+            for x in range(5):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
+                tempList =[]
                 
-                #picks a random exercise from the muscle group obtained from upLow
-                for exercise in Accessories.query.filter_by(muscle = muscleSplit[x]).order_by(Accessories.name).all():
-                    selection = random.choice(exercise.name)
+                #picks a random exercise from the muscle group obtained from ppl
+                for exercise in Accessories.query.filter_by(muscle = muscleSplit[x + 5*i]).order_by(Accessories.name):
+                    tempList.append(exercise.name)
+
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
-                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs exercise name
+                worksheet.write('A'+str(position)+"",random.choice(tempList), movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                #muscleSplit.remove(0)#removes the selected entry to continue
-                #muscleSplit.remove(1)#removes the selected entry to continue
-                #muscleSplit.remove(2)#removes the selected entry to continue
-                #muscleSplit.remove(3)#removes the selected entry to continue
-                #muscleSplit.remove(4)#removes the selected entry to continue
 
             position += 2
-
 
 
 
