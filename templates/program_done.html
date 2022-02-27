@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}New Program{% endblock %}
+{% block content %}
+<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">RoboTrainer has exported a new program!</h1>
+
+<br>
+<br>
+
+<h2 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">
+    This program was personalized for
+    <br>
+    {{name}}, a{% if (exp == "advanced" or exp == "intermediate") %}n{% endif %} 
+    {{exp}} lifter, who wants
+    <br>
+    to go to the gym {{days}} days a week.</h2>
+
+<br>
+<br>
+
+<!--        Home Button     -->
+<form style="font-family: 'Courier New', Courier, monospace; text-align: center;"" method="get" action="{{ url_for('home') }}">
+    <button type="submit"><b>Home</b></button>
+</form>
+
+{% endblock %}
