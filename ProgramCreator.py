@@ -142,7 +142,6 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-            x+=5
 
             position += 2
     #Advanced 
