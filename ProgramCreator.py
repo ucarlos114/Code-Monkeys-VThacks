@@ -109,11 +109,11 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                upLow.remove(0)#removes the selected entry to continue
-                upLow.remove(1)
-                upLow.remove(2)
-                upLow.remove(3)
-                upLow.remove(4)
+                #upLow.remove(0)#removes the selected entry to continue
+                #upLow.remove(1)
+                #upLow.remove(2)
+                #upLow.remove(3)
+                #upLow.remove(4)
 
             position += 2
     #Intermediate
@@ -142,11 +142,11 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                ppl.remove(0)#removes the selected entry to continue
-                ppl.remove(1)#removes the selected entry to continue
-                ppl.remove(2)#removes the selected entry to continue
-                ppl.remove(3)#removes the selected entry to continue
-                ppl.remove(4)#removes the selected entry to continue
+                #ppl.remove(0)#removes the selected entry to continue
+                #ppl.remove(1)#removes the selected entry to continue
+                #ppl.remove(2)#removes the selected entry to continue
+                #ppl.remove(3)#removes the selected entry to continue
+                #ppl.remove(4)#removes the selected entry to continue
 
             position += 2
     #Advanced 
@@ -174,11 +174,11 @@ def prog_create(name, days, expLevel):
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                muscleSplit.remove(0)#removes the selected entry to continue
-                muscleSplit.remove(1)#removes the selected entry to continue
-                muscleSplit.remove(2)#removes the selected entry to continue
-                muscleSplit.remove(3)#removes the selected entry to continue
-                muscleSplit.remove(4)#removes the selected entry to continue
+                #muscleSplit.remove(0)#removes the selected entry to continue
+                #muscleSplit.remove(1)#removes the selected entry to continue
+                #muscleSplit.remove(2)#removes the selected entry to continue
+                #muscleSplit.remove(3)#removes the selected entry to continue
+                #muscleSplit.remove(4)#removes the selected entry to continue
 
             position += 2
 
