@@ -1,24 +1,26 @@
 import xlsxwriter
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from  sqlalchemy.sql.expression import func
+
 import random
 
 
 def prog_create(name, days, expLevel):
     ############################## DECLARING VARIABLES #########################################
     #BEGINNER SPLIT
-    upLow = ["chest", "shoulder", "triceps", "back", "biceps", "legs", "legs", "legs", "legs", "legs",
-            "chest", "shoulder", "triceps", "back", "biceps", "legs", "legs", "legs", "legs", "legs"]
+    upLow = ["chest", "shoulders", "triceps", "back", "biceps", "legs", "legs", "legs", "legs", "legs",
+            "chest", "shoulders", "triceps", "back", "biceps", "legs", "legs", "legs", "legs", "legs"]
     
     #INTERMEDIATE SPLIT
-    ppl = ["chest", "shoulder", "chest", "triceps", "triceps", "back", "back", "back","biceps", "biceps","legs", "legs", "legs", "legs", "legs",
-    "chest", "shoulder", "chest", "triceps", "triceps", "back", "back", "back","biceps", "biceps","legs", "legs", "legs", "legs", "legs"]
+    ppl = ["chest", "shoulders", "chest", "triceps", "triceps", "back", "back", "back","biceps", "biceps","legs", "legs", "legs", "legs", "legs",
+    "chest", "shoulders", "chest", "triceps", "triceps", "back", "back", "back","biceps", "biceps","legs", "legs", "legs", "legs", "legs"]
    
    #ADVANCED SPLIT
     muscleSplit = ["chest", "chest", "chest", "triceps", "triceps","back", "back", "back","biceps", "biceps","shoulders", "legs", "legs", "legs", "legs",
     "chest", "chest", "chest", "triceps", "triceps","back", "back", "back","biceps", "biceps","shoulders", "legs", "legs", "legs", "legs"]
 
-    eRange = 5 #static number of excercises
+    eRange = 5 #static number of exercises
     setRange = [3, 4]#used to get a set range 
     repRange = [6, 8, 10, 12]#used to get a rep range
 
@@ -96,17 +98,17 @@ def prog_create(name, days, expLevel):
             worksheet.merge_range('A'+str(position)+":B"+str(position)+"", "", cell_format)#-----Format cells for day
             worksheet.write('A'+str(position)+"", u'DAY '+str(dayNum)+"",dayCellFormat)#----Day number
 
-            position+=2 #update position for excercises
+            position+=2 #update position for exercises
 
-            for x in range(eRange):#picks and writes the 5 excercises
+            for x in range(eRange):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
                 
-                #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = upLow[x]).order_by(Accessories.name):
-                    selection = random.choice(excercise.name)
+                #picks a random exercise from the muscle group obtained from upLow
+                for exercise in Accessories.query.filter_by(muscle = upLow[x]).order_by(Accessories.name).all():
+                    selection = random.choice(exercise.name)
 
-                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
-                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
+                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
+                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
                 #upLow.remove(0)#removes the selected entry to continue
@@ -120,7 +122,7 @@ def prog_create(name, days, expLevel):
     if(int(expLevel) == 2):
         worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
         for i in range(int(days)):
-        
+            
             temp = i #just to calculate
             dayNum = i+1 #gets the day number
             weekNum = dayNum - temp #gets the week number
@@ -129,20 +131,20 @@ def prog_create(name, days, expLevel):
             worksheet.merge_range('A'+str(position)+":B"+str(position)+"", "", cell_format)#-----Format cells for day
             worksheet.write('A'+str(position)+"", u'DAY '+str(dayNum)+"",dayCellFormat)#----Day number
 
-            position+=2 #update position for excercises
+            position+=2 #update position for exercises
 
-            for x in range(5):#picks and writes the 5 excercises
+            for x in range(5):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
+                tempList =[]
                 
-                #picks a random excercise from the muscle group obtained from upLow
-                for exercise in Accessories.query.filter_by(muscle = ppl[x]).order_by(Accessories.name):
-                    selection = exercise.name
+                #picks a random exercise from the muscle group obtained from ppl
+                for exercise in Accessories.query.filter_by(muscle = ppl[x + 5*i]).order_by(Accessories.name):
+                    tempList.append(exercise.name)
 
-                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
-                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
+                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
+                worksheet.write('A'+str(position)+"",random.choice(tempList), movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-            x+=5
 
             position += 2
     #Advanced 
@@ -158,16 +160,16 @@ def prog_create(name, days, expLevel):
             worksheet.merge_range('A'+str(position)+":B"+str(position)+"", "", cell_format)#-----Format cells for day
             worksheet.write('A'+str(position)+"", u'DAY '+str(dayNum)+"",dayCellFormat)#----Day number
 
-            position+=2 #update position for excercises
+            position+=2 #update position for exercises
 
-            for x in range(eRange):#picks and writes the 5 excercises
+            for x in range(eRange):#picks and writes the 5 exercises
                 selection = "NULL" #Holds the selection
                 
-                #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = muscleSplit[x]).order_by(Accessories.name):
-                    selection = random.choice(excercise.name)
-                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
-                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
+                #picks a random exercise from the muscle group obtained from upLow
+                for exercise in Accessories.query.filter_by(muscle = muscleSplit[x]).order_by(Accessories.name).all():
+                    selection = random.choice(exercise.name)
+                worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for exercise name            
+                worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs exercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
                 #muscleSplit.remove(0)#removes the selected entry to continue
