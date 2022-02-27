@@ -84,7 +84,7 @@ def prog_create(name, days, expLevel):
     ################################### CHOOSING SPLIT/EXP LEVEL ###################################################
     
     #Beginner
-    if (expLevel == 1):
+    if (int(expLevel) == 1):
         worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
         for i in range(int(days)):
         
@@ -117,7 +117,7 @@ def prog_create(name, days, expLevel):
 
             position += 2
     #Intermediate
-    if(expLevel == 2):
+    if(int(expLevel) == 2):
         worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
         for i in range(int(days)):
         
@@ -131,26 +131,22 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for excercises
 
-            for x in range(eRange):#picks and writes the 5 excercises
+            for x in range(5):#picks and writes the 5 excercises
                 selection = "NULL" #Holds the selection
                 
                 #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = ppl[x]).order_by(Accessories.name):
-                    selection = random.choice(excercise.name)
+                for exercise in Accessories.query.filter_by(muscle = ppl[x]).order_by(Accessories.name):
+                    selection = exercise.name
 
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                #ppl.remove(0)#removes the selected entry to continue
-                #ppl.remove(1)#removes the selected entry to continue
-                #ppl.remove(2)#removes the selected entry to continue
-                #ppl.remove(3)#removes the selected entry to continue
-                #ppl.remove(4)#removes the selected entry to continue
+            x+=5
 
             position += 2
     #Advanced 
-    if(expLevel == 3):
+    if(int(expLevel) == 3):
         worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
         for i in range(int(days)):
         

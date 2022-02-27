@@ -45,6 +45,10 @@ def all():
     return render_template("exercises.html", chests=chests, shoulders=shoulders, triceps=triceps,
             backs=backs, biceps=biceps, legs=legs)
 
+"""     About tab       """
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 """     Questionnaire required to create a new program      """
 @app.route('/new', methods=["POST","GET"])

@@ -1,17 +1,56 @@
 {% extends "base.html" %}
 {% block title %}RoboTrainer{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">Lets Begin With</h1>
-<h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">A Short Questionnaire
+<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center">
+    <u>New Program</u>
 </h1>
 
-<br>
-<form method="get" action="{{ url_for('home') }}">
-    <button style="font-family: 'Courier New', Courier, monospace; position:absolute; left:50px;"
-        type="submit"><b>Home</b></button>
-</form>
+<!--        BUTTONS     -->
 
-<form style="text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+<style>
+    button, input {
+        border-radius: 5px;
+        color: black;
+        background-color: blanchedalmond;
+        padding: 5px 10px 8px 10px;
+    }
+
+    /*Button hover state*/
+    button:hover {
+        background-color: hotpink
+    }
+
+    ul>li {
+        display: inline-block;
+        list-style: none;
+    }
+</style>
+
+<ul>
+    <li style="padding-left: 30rem; margin-right:0;"">
+        <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+        action="{{ url_for('home') }}">
+        <button style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
+        </form>
+    </li>
+    <li style="padding-left:3.5rem">
+        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+            action="{{ url_for('all') }}">
+            <button style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercises</b></button>
+        </form>
+    </li>
+    <li style="padding-left:11.5rem;">
+        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+            action="{{ url_for('about') }}">
+            <button style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
+        </form>
+    </li>
+</ul>
+<hr style="color:white; background-color:white;">
+
+<!--########## BUTTONS ##########-->
+
+<form style="padding-top: 4rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
     action="#" method="post">
     <b>What's your name?</b>
     <br>
@@ -30,7 +69,7 @@
     <input type='text' name='exp' />
     <br>
     <br>
-    <input type='submit' value='Submit'/>
+    <input type='submit' value='Submit' />
 </form>
 
 {% endblock %}
