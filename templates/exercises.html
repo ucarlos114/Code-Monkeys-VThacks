@@ -1,8 +1,45 @@
 {% extends "base.html" %}
-{% block title %}exercise database{% endblock %}
+{% block title %}Exercises{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-family: Arial, Helvetica, sans-serif; text-align: center">Exercise Database</h1>
+<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center"><u>Exercise Database</u></h1>
 <form method="get" action="{{ url_for('home') }}">
-    <button type="submit">Home</button>
+    <button style="font-family: 'Courier New', Courier, monospace; position:absolute; left:50px;" type="submit"><b>Home</b></button>
 </form>
+
+<h1 style="text-align:center; color:whitesmoke; font-size: 28px; font-family: 'Courier New', Courier, monospace;">RoboTrainer prescribes exercises from this pool.</h1>
+
+<br>
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Chest Exercises:</h1>
+{% for chest in chests %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{chest.name}}</li>
+{% endfor %}
+
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Shoulders Exercises:</h1>
+{% for shoulder in shoulders %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{shoulder.name}}</li>
+{% endfor %}
+
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Tricep Exercises:</h1>
+{% for tricep in triceps %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{tricep.name}}</li>
+{% endfor %}
+
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Back Exercises</h1>
+{% for back in backs %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{back.name}}</li>
+{% endfor %}
+
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Bicep Exercises</h1>
+{% for bicep in biceps %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{bicep.name}}</li>
+{% endfor %}
+
+<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Legs Exercises</h1>
+{% for leg in legs %}
+<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{leg.name}}</li>
+{% endfor %}
+
+<br>
+<br>
+
 {% endblock %}
