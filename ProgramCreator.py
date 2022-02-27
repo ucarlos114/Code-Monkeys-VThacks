@@ -1,11 +1,23 @@
-from questionnaire import *
 import xlsxwriter
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-#from sqlalchemy import desc
+import random
 
-questionnaire()
-############################## CONNECT TO DATABASE #####################################333
+
+
+############################## DECLARING VARIABLES #########################################
+
+setRange = [3, 4]#used to get a set range 
+repRange = [6, 8, 10, 12]#used to get a rep range
+
+name = "Carlos" #users name
+days = 4 #how many days they wanna lift
+expLevel = 1 #experience level (1 - beginner, 2 - intermediate, 3 - advanced)
+
+position = 5 #cell position
+############################## END DECLARING VARS #########################################
+
+############################## CONNECT TO DATABASE #####################################
 
 app = Flask(__name__)
 
@@ -25,8 +37,8 @@ class Accessories(db.Model):
 
 ############################ END DATABASE STUFF ###############################################
 
-chestExcercise = Accessories.query.filter_by(muscle = 'chest').order_by(Accessories.name).all()
-
+chestQuery = Accessories.query.filter_by(muscle = "chest").order_by(Accessories.name)
+chestCount = 0
 
 #takes one arguement which is the file name
 workbook = xlsxwriter.Workbook('moeed.xlsx')
@@ -38,39 +50,46 @@ worksheet = workbook.add_worksheet()
 red = workbook.add_format({'color': 'red'})
 blue = workbook.add_format({'color': 'blue'})
 cell_format = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter',
-                                   'border': 2, 'bold': True})
+                                'valign': 'vcenter',
+                                'border': 2, 'bold': True})
 
 weekCellFormat = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter','bold': True, })#Week cell formatting
+                                'valign': 'vcenter','bold': True, })#Week cell formatting
 weekCellFormat.set_font_size(20)#increases size of text in week cell
 
 dayCellFormat = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter','bold': True, 'border':2 })# day cell formatting
+                                'valign': 'vcenter','bold': True, 'border':2 })# day cell formatting
 
 movementFormat = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter','bold': True})
+                                'valign': 'vcenter','bold': True, 'border':2})
+movementFormat.set_text_wrap()
 
 ######################################### END FORMATS FOR WORKBOOK #############################################
 
 ######################################### Writing to Cells #####################################################
-worksheet.merge_range('A1:K3', "", cell_format)#-----WEEK X
-worksheet.write('A1', u'WEEK 1',weekCellFormat)
+
+worksheet.merge_range('A1:S3', "", cell_format)#-----WEEK Formatting (Static)
+for i in range(days):
+    temp = i #just to calculate
+    dayNum = i+1 #gets the day number
+    weekNum = dayNum - temp #gets the week number
+    worksheet.write('A1', u'WEEK '+str(weekNum), weekCellFormat)#----Week Number
+
+    worksheet.merge_range('A'+str(position)+":B"+str(position)+"", "", cell_format)#-----Format cells for day
+    worksheet.write('A'+str(position)+"", u'DAY '+str(dayNum)+"",dayCellFormat)#----Day number
+
+    position+=2 #update position for excercises
+
+    for chest in chestQuery:
+        worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)
+        worksheet.write('A'+str(position)+"",chest.name, movementFormat)
+        worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat)
+        chestCount+=1#remember to change var name
+        position +=1
+    position += 2
 
 
-worksheet.merge_range('A5:B5', "", cell_format)#-----DAY X
-worksheet.write('A5', u'DAY 1',dayCellFormat)
-worksheet.write(chestExcercise, movementFormat)
 
-
-worksheet.merge_range('D5:E5', "", cell_format)#-----DAY X
-worksheet.write('D5', u'DAY 2',dayCellFormat)
-
-worksheet.merge_range('G5:H5', "", cell_format)#-----DAY X
-worksheet.write('G5', u'DAY 3',dayCellFormat)
-
-worksheet.merge_range('J5:K5', "", cell_format)#-----DAY X
-worksheet.write('J5', u'DAY 4',dayCellFormat)
 ##################################### END WRITING TO CELLS ###########################################################
 #close the worksheet
 workbook.close()
