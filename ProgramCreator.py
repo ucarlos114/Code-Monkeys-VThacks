@@ -117,8 +117,6 @@ def prog_create(name, days, expLevel):
                 
                 #picks a random exercise from the muscle group obtained from ppl
                 for exercise in Accessories.query.filter_by(muscle = upLow[x + 5*i]).order_by(Accessories.name):
-                    print(exercise.name)
-                    print(str(len(tempList)))
                     tempList.append(exercise.name)
                 
                 choice = random.choice(tempList)

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}RoboTrainer{% endblock %}
+{% block content %}
+<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center">
+    <u>New Program</u>
+</h1>
+
+<!--        BUTTONS     -->
+
+<style>
+    button, input {
+        border-radius: 5px;
+        color: black;
+        background-color: blanchedalmond;
+        padding: 5px 10px 8px 10px;
+    }
+
+    /*Button hover state*/
+    button:hover {
+        background-color: hotpink
+    }
+
+    ul>li {
+        display: inline-block;
+        list-style: none;
+    }
+</style>
+
+<ul>
+    <li style="padding-left: 30rem; margin-right:0;"">
+        <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+        action="{{ url_for('home') }}">
+        <button title="Return to home page" style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
+        </form>
+    </li>
+    <li style="padding-left:3.5rem">
+        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+            action="{{ url_for('all') }}">
+            <button title="The exercises that RoboTrainer could recommend" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercises</b></button>
+        </form>
+    </li>
+    <li style="padding-left:11.5rem;">
+        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+            action="{{ url_for('about') }}">
+            <button title = "Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
+        </form>
+    </li>
+</ul>
+<hr style="color:white; background-color:white;">
+
+<!--########## BUTTONS ##########-->
+
+<form style="padding-top: 4rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    action="#" method="post">
+    <b>What's your name?</b>
+    <br>
+    <input type='text' name='name' />
+    <br>
+    <br>
+    <b>How many days of the week would you like to work out?</b>
+    <br>
+    <input type='text' name='days' />
+    <br>
+    <br>
+    <b>What's your level of experience when it comes to the gym?</b>
+    <br>
+    Enter 1 for beginner, 2 for intermediate, or 3 for advanced
+    <br>
+    <input type='text' name='exp' />
+    <br>
+    <br>
+    <input type='submit' value='Submit' />
+</form>
+
+{% endblock %}
