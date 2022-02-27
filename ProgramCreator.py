@@ -98,18 +98,18 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for excercises
 
-            for i in range(eRange):#picks and writes the 5 excercises
+            for x in range(eRange):#picks and writes the 5 excercises
                 selection = "NULL" #Holds the selection
                 
                 #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = upLow[i]).order_by(Accessories.name):
+                for excercise in Accessories.query.filter_by(muscle = upLow[x]).order_by(Accessories.name):
                     selection = random.choice(excercise.name)
 
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                upLow.remove(i)#removes the selected entry to continue
+                upLow.remove(x)#removes the selected entry to continue
 
             position += 2
     #Intermediate
@@ -127,18 +127,18 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for excercises
 
-            for i in range(eRange):#picks and writes the 5 excercises
+            for x in range(eRange):#picks and writes the 5 excercises
                 selection = "NULL" #Holds the selection
                 
                 #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = ppl[i]).order_by(Accessories.name):
+                for excercise in Accessories.query.filter_by(muscle = ppl[x]).order_by(Accessories.name):
                     selection = random.choice(excercise.name)
 
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                ppl.remove(i)#removes the first entry to continue
+                ppl.remove(x)#removes the first entry to continue
 
             position += 2
     #Advanced 
@@ -156,18 +156,17 @@ def prog_create(name, days, expLevel):
 
             position+=2 #update position for excercises
 
-            for i in range(eRange):#picks and writes the 5 excercises
+            for x in range(eRange):#picks and writes the 5 excercises
                 selection = "NULL" #Holds the selection
                 
                 #picks a random excercise from the muscle group obtained from upLow
-                for excercise in Accessories.query.filter_by(muscle = muscleSplit[i]).order_by(Accessories.name):
+                for excercise in Accessories.query.filter_by(muscle = muscleSplit[x]).order_by(Accessories.name):
                     selection = random.choice(excercise.name)
-
                 worksheet.merge_range("A"+str(position)+":C"+str(position)+"", "", dayCellFormat)#merge cells for excercise name            
                 worksheet.write('A'+str(position)+"",selection, movementFormat)#inputs excercise name
                 worksheet.write("D"+str(position)+"", ""+str(random.choice(setRange))+"x"+str(random.choice(repRange))+"", movementFormat) #inputs setxrep range
                 position +=1#updates position
-                muscleSplit.remove(i)#removes the first entry to continue
+                muscleSplit.remove(x)#removes the first entry to continue
 
             position += 2
 
