@@ -2,9 +2,9 @@
 {% block title %}RoboTrainer{% endblock %}
 {% block content %}
 <h1 style="color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">Lets Begin</h1>
-<button type="button" style="font-family: 'Courier New', Courier, monospace; position: relative; left:200px;"><b>Begin</b></button>
-<button type="button" style="font-family: 'Courier New', Courier, monospace; position: relative; left:200px;"><b>About</b></button>
-<form method="get" action="{{ url_for('all') }}">
-    <button style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercise Database</b></button>
+
+<form method="get" action="{{ url_for('home') }}">
+    <button style="font-family: 'Courier New', Courier, monospace; position:absolute; left:50px;" type="submit"><b>Home</b></button>
 </form>
+
 {% endblock %}

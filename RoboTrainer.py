@@ -51,5 +51,9 @@ def all():
     return render_template("exercises.html", chests=chests, shoulders=shoulders, triceps=triceps,
             backs=backs, biceps=biceps, legs=legs)
 
+@app.route('/new')
+def new():
+    return render_template("questionnaire.html")
+
 if (__name__ == "__main__"):
     app.run(debug=True)
