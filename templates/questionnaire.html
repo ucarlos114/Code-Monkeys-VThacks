@@ -30,19 +30,19 @@
     <li style="padding-left: 30rem; margin-right:0;"">
         <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
         action="{{ url_for('home') }}">
-        <button style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
+        <button title="Return to home page" style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
         </form>
     </li>
     <li style="padding-left:3.5rem">
         <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
             action="{{ url_for('all') }}">
-            <button style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercises</b></button>
+            <button title="The exercises that RoboTrainer could recommend" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercises</b></button>
         </form>
     </li>
     <li style="padding-left:11.5rem;">
         <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
             action="{{ url_for('about') }}">
-            <button style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
+            <button title = "Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
         </form>
     </li>
 </ul>
