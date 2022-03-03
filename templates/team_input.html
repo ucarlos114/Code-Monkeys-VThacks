@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Team Generator{% endblock %}
+{% block content %}
+
+<form
+    style="padding-top: 12rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    action="#" method="post">
+
+    <b>Competitor {{num}}: </b>
+    <br>
+    <input type='text' name='competitor' />
+
+    <br>
+    <br>
+
+    <b>Total: </b>
+    <br>
+    <input type='text' name='total' />
+
+    <br>
+    <br>
+
+    <input type='submit' value='Submit' />
+</form>
+
+{% endblock %}

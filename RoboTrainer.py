@@ -1,8 +1,8 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import desc
-from sqlalchemy.sql.expression import func, select
 from ProgramCreator import *
+from Conversions import *
+from teams import *
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ class Accessories(db.Model):
 ########################### DATABASE SETUP ############################
 
 
-"""     Both lead to default home page      """
+########## Both lead to default home page ##########
 @app.route('/')
 def default():
     return redirect(url_for("home"))
@@ -32,7 +32,7 @@ def home():
         return render_template("main.html")
 
 
-"""     Show all exercises in database      """
+########## Show all exercises in database ##########
 @app.route('/allexercises')
 def all():
     chests = Accessories.query.filter_by(muscle = "chest").order_by(Accessories.id).all()
@@ -45,12 +45,12 @@ def all():
     return render_template("exercises.html", chests=chests, shoulders=shoulders, triceps=triceps,
             backs=backs, biceps=biceps, legs=legs)
 
-"""     About tab       """
+########## About tab ##########
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-"""     Questionnaire required to create a new program      """
+########## Questionnaire required to create a new program ##########
 @app.route('/new', methods=["POST","GET"])
 def new():
     if request.method == "POST":
@@ -72,12 +72,57 @@ def new():
         return render_template("questionnaire.html")
 
 
-"""     Process the info from questionnaire     """
+########## Process the info from questionnaire ##########
 @app.route("/program_<name>_<days>days_<level><exp>")
 def process(name, days, exp, level):
     prog_create(name, days, exp)
     return render_template("program_done.html", name=name, days=days, level=level)
-    
+
+
+########## Pound to kilogram calculator ##########
+@app.route("/poundtokilo", methods=["POST", "GET"])
+def convert():
+    if request.method == "POST":
+        pounds = request.form['pounds']
+        return redirect(url_for("displayConvert", result=pounds))
+    else:
+        return render_template("convert_main.html")
+
+
+########## Pound to kilogram result display ##########
+@app.route("/display_result_<result>", methods=["POST", "GET"])
+def displayConvert(result):
+    res = to_kilo(result)
+    return render_template("converted.html", pound=result, kilo=res)
+
+
+########## Auto team creator start ##########
+@app.route("/create_teams", methods=["POST", "GET"])
+def teams():
+    if request.method == "POST":
+        num_competitors = request.form['num']
+        comps=[]
+        totals=[]
+        return redirect(url_for("team_input", x=0, num=num_competitors, comps=comps, totals=totals))
+    else:
+        return render_template("teams.html")
+
+
+########## Auto team creator competitor input ##########
+@app.route("/team_input_<num>_<x>", methods=["POST", "GET"])
+def team_input(x, num):
+    comps = comps
+    totals = totals
+    if request.method == "POST":
+        
+        comps.append(request.form['competitor'])
+        totals.append(request.form['total'])
+        x = int(x)+1
+        if (int(x) == int(num)):
+            return f"<h1>First competitor: {comps[0]} {totals[0]}</h1>"
+        return redirect(url_for('team_input', x=x, num=num, comps=comps, totals=totals))
+    else:
+        return render_template("team_input.html", num=int(x))
 
 """     Run app     """
 if (__name__ == "__main__"):

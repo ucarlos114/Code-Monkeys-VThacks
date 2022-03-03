@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Team Generator{% endblock %}
+{% block content %}
+
+<style>
+    button {
+        border-radius: 5px;
+        color: black;
+        background-color: blanchedalmond;
+        padding: 5px 10px 8px 10px;
+    }
+
+    /*Button hover state*/
+    button:hover {
+        background-color: hotpink
+    }
+</style>
+
+<h style="padding-left: 35rem; margin-right:0;"">
+    <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+    action="{{ url_for('home') }}">
+    <button title = "Return to the home page"style="font-family:'Courier New', Courier, monospace;"><b>Home</b></button>
+    </form>
+</h>
+
+
+<hr style="color:white; background-color:white;">
+
+<br>
+<br>
+
+<form
+    style="padding-top: 12rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    action="#" method="post">
+    <b>How many competitors?</b>
+    <br>
+    <input type='text' name='num' />
+    <br>
+    <br>
+    <input type='submit' value='Begin' />
+</form>
+
+{% endblock %}
