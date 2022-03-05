@@ -16,6 +16,9 @@ def print_array(arr):
     for item in arr:
         print(item)
 
+def print_array_to_file(arr, f):
+    for item in arr:
+        f.write(item + "\n")
 
 def sum_array(arr) -> int:
     sum = 0
@@ -115,17 +118,14 @@ def best_split4(names, totals, length, half):
 
 ############ main function ############
 
-def arrange_teams():
-    info = fill_array()
-    names = info[0]
-    totals = info[1]
+def arrange_teams(names, totals):
     length = len(names)
     half = sum_array(totals) / 2
 
     ######## CALCULATION ########    returns [team1, total1, team 2, total2, diff]
-
+    best_teams = None
     # WORKS WITH 2 OR 3 COMPETITORS
-    if (length > 1):    
+    if (length > 1):
         best_teams = best_split1(names, totals, length, half)
     # WORKS WITH 4 OR 5 COMPETITORS
     if(length > 3):
@@ -143,22 +143,28 @@ def arrange_teams():
         if (maybe_best_teams[4] < best_teams[4]):
             best_teams = maybe_best_teams
 
-    ######## CALCULATION ########
-
-    ##### PRINT RESULTS #####
-
-    print("--------------- ~~CALCULATING~~ ---------------\n")
-    print("Team 1 Total = " + str(best_teams[1]))
-    print_array(best_teams[0])
-    print("\n------------------------------\n")
-    print("Team 2 Total = " + str(best_teams[3]))
-    print_array(best_teams[2])
-    print("\n------------------------------\n")
-    print("Difference Between Team Totals: " + str(best_teams[4]))
-    print("\n")
-
-    ##### PRINT RESULTS #####
-
-    return [best_teams]
-
+    ######## END CALCULATION ########
+    
+    ##### WRITE RESULTS TO FILE #####
+    file = open("team_results.txt", "w")
+    file.write("\n\n--------------- ~~CALCULATING~~ ---------------" + "\n")
+    file.write("Team 1 Total = " + str(best_teams[1]))
+    file.write("\n")
+    print_array_to_file(best_teams[0], file)
+    file.write("------------------------------")
+    file.write("\n")
+    file.write("Team 2 Total = " + str(best_teams[3]))
+    file.write("\n")
+    print_array_to_file(best_teams[2], file)
+    file.write("------------------------------\n")
+    file.write("Difference Between Team Totals: " + str(best_teams[4]))
+    file.write("\n")
+    file.close()
+    return [best_teams[0], best_teams[1], best_teams[2], best_teams[3], best_teams[4]]
+    
 ############ end main function ############
+
+
+def run_locally():
+    info = fill_array()
+    arrange_teams(info[0], info[1])

@@ -3,7 +3,7 @@
 {% block content %}
 
 <style>
-    button {
+    button, input {
         border-radius: 5px;
         color: black;
         background-color: blanchedalmond;
@@ -19,24 +19,25 @@
 <h style="padding-left: 35rem; margin-right:0;"">
     <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
     action="{{ url_for('home') }}">
-    <button title = "Return to the home page"style="font-family:'Courier New', Courier, monospace;"><b>Home</b></button>
+    <button title="Return to the home page" style="font-family:'Courier New', Courier, monospace;"><b>Home</b></button>
     </form>
 </h>
 
 
-<hr style="color:white; background-color:white;">
+<hr style="color:whitesmoke; background-color:whitesmoke;">
 
 <br>
 <br>
 
 <b>
-{% block result %}
-<!-- where the result will be displayed -->
-{% endblock %}
+    {% block result %}
+    <!-- where the result will be displayed -->
+    {% endblock %}
 </b>
 
+
 <form
-    style="padding-top: 12rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    style="padding-top: 12rem; text-align: center; color:whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
     action="{{url_for('convert')}}" method="post">
     <b>Enter pounds</b>
     <br>
