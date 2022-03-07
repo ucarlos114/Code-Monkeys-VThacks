@@ -1,7 +1,7 @@
 from flask import Flask, flash, redirect, render_template, request, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from ProgramCreator import *
-from Conversions import *
+# from Conversions import *
 from teams import *
 
 app = Flask(__name__)
@@ -46,6 +46,14 @@ def compute_teams():    # actually running team generator algorithm
     teams = arrange_teams(names, totals)
     print(teams)
     return teams
+
+
+def to_kilo(pound):     # convert pounds into kilos
+    return round(0.45359237*float(pound), 1)
+
+
+def to_pound(kilo):     # convert kilos to pounds
+    return round(float(kilo)/0.45359237, 1)
 
 ########## END HELPER FUNCTIONS ##########
 
@@ -94,8 +102,16 @@ def about():
 def new():
     if request.method == "POST":
         name = request.form['name']
-        days = int(request.form['days'])
-        exp = int(request.form['exp'])
+        days = request.form['days']
+        # days not empty and is number between 2 and 6 
+        if (not (days.isnumeric() and (2 <= int(days) <= 6))):
+            flash("Please enter an amount of days from 2 to 6")
+            return render_template("questionnaire.html")
+        exp = int(request.form['slider'])
+
+        if (int(exp) > 1 and int(days) < 3):
+            flash("For beginner or intermediate programs, minimum days per week is 3")
+            return render_template("questionnaire.html")
 
         # determine exp level as string to display later
         if (exp == 1):
@@ -104,8 +120,11 @@ def new():
             level = "intermediate"
         else:
             level = "advanced"
-
-        return redirect(url_for("process", name=name, days=days, exp=exp, level=level))
+        # make sure name is not empty, is only letters
+        if (len(str(name)) == 0 or not str(name).isalpha()):
+            flash("Please enter a valid name")
+            return render_template("questionnaire.html")
+        return redirect(url_for("process", name=str(name), days=int(days), exp=exp, level=level))
 
     else:
         return render_template("questionnaire.html")
@@ -122,17 +141,24 @@ def process(name, days, exp, level):
 @app.route("/poundtokilo", methods=["POST", "GET"])
 def convert():
     if request.method == "POST":
-        pounds = request.form['pounds']
-        return redirect(url_for("displayConvert", result=pounds))
+        num = request.form['num']
+        conv = request.form['conv-type']
+        if (num.isnumeric() and int(num) > 0):
+            return redirect(url_for("displayConvert", num=num, conv=conv, drop='kilo'))
+        flash("Please enter a number greater than 0")
+        return redirect(url_for('convert'))
     else:
-        return render_template("convert_main.html")
+        return render_template("convert_main.html", drop='pound')
 
 
 ########## Pound to kilogram result display/restart ##########
-@app.route("/display_result_<result>", methods=["POST", "GET"])
-def displayConvert(result):
-    res = to_kilo(result)
-    return render_template("converted.html", pound=result, kilo=res)
+@app.route("/display_result_<num>_<conv>", methods=["POST", "GET"])
+def displayConvert(num, conv):
+    if (str(conv) == 'topound'):
+        res = to_pound(num)
+        return render_template("converted.html", pound=res, kilo=num, drop='kilo')
+    res = to_kilo(num)
+    return render_template("converted.html", pound=num, kilo=res, drop='pound')
 
 
 ########## Auto team creator start ##########
@@ -140,7 +166,7 @@ def displayConvert(result):
 def teams():
     if request.method == "POST":
         num = request.form['num']
-        if (num.isnumeric()):
+        if (num.isnumeric() and 2 <= int(num) <= 9):
             return redirect(url_for("team_input", num=int(num)))
         flash("Enter a number between 2 and 9", "warning")
         return redirect(url_for('teams'))
@@ -164,7 +190,7 @@ def team_input(num):
                 flash(f"Only enter numbers for totals, {total}")
                 return render_template("team_input.html", num=int(num))
         return render_template("display_teams.html", best=compute_teams())
-            
+
     return render_template("team_input.html", num=int(num))
 
 

@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block title %}RoboTrainer{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center">
+<h1 style="color:whitesmoke; font-size: 70px; font-family:rockwell; text-align: center">
     <u>New Program</u>
 </h1>
 
 <!--        BUTTONS     -->
 
 <style>
-    button, input {
+    button,
+    input {
         border-radius: 5px;
         color: black;
         background-color: blanchedalmond;
@@ -17,40 +18,83 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink
+        background-color: aqua
     }
 
     ul>li {
         display: inline-block;
         list-style: none;
     }
+
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        /* SLIDER CLASS*/
+        -webkit-appearance: none;
+        width: 35%;
+        height: 25px;
+        background-color: blanchedalmond;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #04AA6D;
+        cursor: pointer;
+    }
 </style>
 
-<ul>
-    <li style="padding-left: 30rem; margin-right:0;"">
-        <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
-        action="{{ url_for('home') }}">
-        <button title="Return to home page" style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
+<ul style="font-family: rockwell;">
+    <li style="padding-left: 28%; margin-right:0;"">
+        <form style=" text-align:center; font-size:24px;" method="get" action="{{ url_for('home') }}">
+        <button title="Return to home page" style="margin-right:6rem;"><b>Home</b></button>
         </form>
     </li>
     <li style="padding-left:3.5rem">
-        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+        <form style="font-family: rockwell; text-align:center; font-size:24px;" method="get"
             action="{{ url_for('all') }}">
-            <button title="The exercises that RoboTrainer could recommend" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercises</b></button>
+            <button title="The exercises that RoboTrainer could recommend" type="submit"><b>Exercises</b></button>
         </form>
     </li>
-    <li style="padding-left:11.5rem;">
-        <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
-            action="{{ url_for('about') }}">
-            <button title = "Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
+    <li style="padding-left:9rem;">
+        <form style="text-align:center; font-size:24px;" method="get" action="{{ url_for('about') }}">
+            <button style="font-family: rockwell " title="Learn about RoboTrainer's program" type="submit"><b>About</b></button>
         </form>
     </li>
 </ul>
 <hr style="color:whitesmoke; background-color:whitesmoke;">
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p style="color: whitesmoke; text-align:center; font-size:20px; font-family: rockwell; ">
+    {{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
 <!--########## BUTTONS ##########-->
 
-<form style="padding-top: 4rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+<form
+    style="padding-top: 2%; padding-bottom: 2%; text-align: center; color: whitesmoke; font-size: 24px; font-family:rockwell;"
     action="#" method="post">
     <b>What's your name?</b>
     <br>
@@ -64,10 +108,15 @@
     <br>
     <b>What's your level of experience when it comes to the gym?</b>
     <br>
-    Enter 1 for beginner, 2 for intermediate, or 3 for advanced
     <br>
-    <input type='text' name='exp' />
-    <br>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="3" value="2" class="slider" name="slider">
+    </div>
+    <ul style="color: whitesmoke; font-size: 24px; font-family:rockwell; padding-left:0rem;">
+        <li>Beginner</li>
+        <li style="padding-left: 7%; padding-right: 5%;">Intermediate</li>
+        <li>Advanced</li>
+    </ul>
     <br>
     <input type='submit' value='Submit' />
 </form>

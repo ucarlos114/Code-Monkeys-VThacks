@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Exercises{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center">
+<h1 style="color:whitesmoke; font-size: 70px; font-family: rockwell; text-align: center">
     <u>Exercise Database</u>
 </h1>
 
@@ -17,32 +17,49 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink
+        background-color: aqua
+    }
+
+    h1 {
+        font-family: rockwell;
+        text-align: center;
+        color: whitesmoke;
     }
 
     ul>li {
         display: inline-block;
         list-style: none;
+
+    }
+
+    li {
+        font-family: rockwell;
+        text-align: center;
+        color: whitesmoke;
+        font-size: 20px;
     }
 </style>
 
 <ul>
-    <li style="padding-left: 30rem; margin-right:0;"">
+    <li style="padding-left: 27%; margin-right:0;"">
         <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
         action="{{ url_for('home') }}">
-        <button title="Return to home page" style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
+        <button title="Return to home page"
+            style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
         </form>
     </li>
     <li style="padding-left:3.5rem">
         <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
             action="{{ url_for('new') }}">
-            <button title= "Get your own personalized program" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>New Program</b></button>
+            <button title="Get your own personalized program" style="font-family:'Courier New', Courier, monospace;"
+                type="submit"><b>New Program</b></button>
         </form>
     </li>
     <li style="padding-left:8.5rem;">
         <form style="font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
             action="{{ url_for('about') }}">
-            <button title="Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;" type="submit"><b>About</b></button>
+            <button title="Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;"
+                type="submit"><b>About</b></button>
         </form>
     </li>
 </ul>
@@ -50,49 +67,49 @@
 
 <!--########## BUTTONS ##########-->
 
-<h1 class="exer" style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">
+<h1 class="exer" style="text-align:center; color:whitesmoke; font-family: rockwell">
     RoboTrainer prescribes exercises from this pool.</h1>
 
 <br>
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Compound Exercises:</h1>
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Squat</li>
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Bench</li>
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Deadlift</li>
+<h1>Compound Exercises:</h1>
+<li>Squat</li>
+<li>Bench</li>
+<li>Deadlift</li>
 
 
 
 <br>
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">Chest Exercises:</h1>
+<h1>Chest Exercises:</h1>
 {% for chest in chests %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{chest.name}}</li>
+<li>{{chest.name}}</li>
 {% endfor %}
 
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Shoulders
+<h1><br>Shoulders
     Exercises:</h1>
 {% for shoulder in shoulders %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{shoulder.name}}</li>
+<li>{{shoulder.name}}</li>
 {% endfor %}
 
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Tricep Exercises:
+<h1><br>Tricep Exercises:
 </h1>
 {% for tricep in triceps %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{tricep.name}}</li>
+<li>{{tricep.name}}</li>
 {% endfor %}
 
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Back Exercises</h1>
+<h1><br>Back Exercises</h1>
 {% for back in backs %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{back.name}}</li>
+<li>{{back.name}}</li>
 {% endfor %}
 
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Bicep Exercises
+<h1><br>Bicep Exercises
 </h1>
 {% for bicep in biceps %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{bicep.name}}</li>
+<li>{{bicep.name}}</li>
 {% endfor %}
 
-<h1 style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;"><br>Legs Exercises</h1>
+<h1><br>Legs Exercises</h1>
 {% for leg in legs %}
-<li style="text-align:center; color:whitesmoke; font-family: 'Courier New', Courier, monospace;">{{leg.name}}</li>
+<li>{{leg.name}}</li>
 {% endfor %}
 
 <br>

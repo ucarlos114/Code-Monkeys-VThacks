@@ -2,8 +2,13 @@
 
 {% block result %}
 
-<h1 style="padding-top: 4rem; text-align: center; color:whitesmoke; font-family:'Courier New', Courier, monospace;">
-{{pound}} Pounds = {{kilo}} Kilograms
+<h1 style="padding-top: 4rem; font-size: 60px; text-align: center; color:whitesmoke; font-family: rockwell;">
+    {% if drop == 'kilo' %}
+    {{kilo}} Kilograms = {{pound}} Pounds
+    {% endif %}
+    {% if drop == 'pound' %}
+    {{pound}} Pounds = {{kilo}} Kilograms
+    {% endif %}
 </h1>
 
 {% endblock %}

@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block title %}RoboTrainer{% endblock %}
 {% block content %}
-<h1
-    style="padding-top:3rem; font-size:75px; color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">
+<h1 style="padding-top:3rem; font-size:75px; color:whitesmoke; font-family: rockwell; text-align: center">
     Hello, I am RoboTrainer...</h1>
 <style>
     body {
@@ -18,13 +17,13 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink;
+        background-color: aqua;
         cursor: help;
     }
 
     a:hover,
     img:hover {
-        color: hotpink;
+        color: aqusa;
     }
 
     ul>li {
@@ -33,11 +32,20 @@
     }
 </style>
 
+<div style="text-align: center;">
+    <a href="https://devpost.com/software/robotrainer#updates" target="_blank">
+        <img title="Click on me to learn about our team!" style="border-radius: 45%; margin-top: 3rem;"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADpCAMAAABx2AnXAAABfVBMVEX///8REiSCuMIjOFW8AgPlFRUAAADa2tv39/f6+vqampq3t7d7tb/IyMjCwsIfM1HkAAAEKEvk8PBpkpYOqcd9sLhJbH/+eoihyNDq8vSz0tlRYHaEvMR1o6qWxMtUeYpBXnCSrrKHAQHZDxDynZ7tfn31X2n14OGl0tlkjp57AADM4ORZfonmIyedAgO1AgHZiIexDA+13ek9WG/QEBLwjY0bJkgAABfqAAAVi6j+7e9QfH++w8oac5IAABwAABPYAAAAHUWDjJq6Rkz+dIMXGClBQUwnKDbgfX3rJSiNFxngYm39t73qurvOaGnMXl7Im5qepbC2dn1hboA/cXS8zs+hjZOZmaMuR2FolKPU19yY0uEAFkGAgIZtbnZPT1raTla3NTz6qq/GOTijcXKtU1WVpKW4hojzT1n5ZnPsPkT2zM1aGjrXnJypr7m8b3OIKTzBHydQMUkyNlGUKDgcYHyStMRGmLFYvNRyw9cAADhISFJeXmaIiY0zNUEQ5FsMAAAPz0lEQVR4nO2diWPaRhbGhRwDwsKySEgQliF22k2xnLoOLlCHiIgW6JGLsCmYGNE7u9uWtrvb08DfvnPoBEkIG4OU1Rc7kodh/H7MzJuZp5FMEIECBQoUKFCgQIECBQoUKNCV6623kb75GB/ffvEePt5dpVF3sQ3vvVCM+vgbfHxrjiK2kB7tP8Inpb3DEjp5/+rMnq33sS2He9iWrTuqee4/7ruffHIPav8YHe59sneEEtZXC7aObDnaw8bdO97Hx3X3YCe3kD7a/wyf3Pr0Q5zw+ArtnqnHHyEjPvxUMeqzfZxw68R1EQHYUhWA2evkb1j7Xygnn36Jj19dod0z9RW24ctPFaO+2FdO3INp7v4OPtnaO9ryirvfOtpTjDq+gLvfWoe6s3+8jrV3hA6rBkNGHO0pRh3v38FWBWAB2HIVgNkrAFuqFgB24i8wdwP03a+B1meCcQL8P8GB/yiBWiwBLpBLwHOB05LtwNahxbNr7cnhtWvXZoJRJJ0Gv5Wmwe/N0JnFgqECOZoGn12aprVPzRYMGHz4ZEFgHE1m0K8FHytJkgvlolCBCRp+dBmS1qrMCeyaM1g0GqWeXHMEiyJREIyi0iQtUFFgR3ShggVSAk2mKQqCKakzwCiYxeaTim9ubsZfO4E9hVmQaJLc3AS/try5ScLTRQoVWCbJDDyl1dT4Uyew18h4687ObcSBnjuDKQJgmXgcgL2Mx4Ed8YUKFfiSJFPoN2yqyY5gz2GODc4aLAb1zTVNh/uHytneu/j4bUwVSSZjsV2S/A6ekrGFChX4HUnuxmJJQ9nfYhve3ZsyD+gblMUajIhvAL12BNtQBZri7m4S/gfoyI2FilSKTcL/aC15EuzICPYa5ojbOQ+KoognTmDvwSxQwHkYRS1SUV4tFp7QnJJMvOcE9gQZ76Qnem4rMLXZmsEcS5xbpqJ1dz8DbJYuBOZq6vHk7be/d5OPugCYiwH65OnTp89mgkVNYLwbe99f/4fLoEnGBKaNTrZgz4DJ7uaLJzPBTL+cTrko8/utW7c+cTcTT1k3c1uwOaJUs8HShiqjBRdlfnXv1j+31rfcBPASxrLTs8HmWI/NBjN2BDcVRjze+hcc4l2FXFMGMr37LgfM6D5cuY6TLThxcLd20j812jDkLgmMWNtBfoM83XZX6PfrAM2VWySI7Rwcw3h+Z82QuCwwtpDP5nLZDusSjCj/8EPZZdZttgPLzhdYQ+LSwNYYqDXGNRjLugZjlMJXA4Z1RWBYAZg7BWABGJSHwQ4vB3YmXQ7s0Ax2eAGwR3egjveP72DtHaHDI+PkfDaY8I5ZqdREgu0c0xLsfWzV0Z5i1DXFvEcLjt3PAku840KJecAWcVHCfA26tHc4fQ3aFizKASXSGRdcqcw7CZh7MiJoA4Z0mS1HxOO3kJ6/pej5j/honMLagQl49kq6FM440SgtwU6wDT/qVuHDovdo2IBRM0CsxZtXCJZgy5INGHchMNLcGD0PxgNZVpAin4LlDg6y2exBbqq/0bksUs6XYPzNAlp6MIXbE7XG31Zfucn7EUw1n8lPguWVF5jbfgQjkzcVJSebosUrfgIDLoLmM6mMxZBGg2Twol+dBxh34fCUSE2g0SkYe4oKxjR/gUWJbrvKmaOrKAZKDapNgObTGqM5oipJTZhoisZniMiaJMFKM4R8vQ3GRQxgdIpoSmtsF76ACfCITCeiHUZ5U8oIFtGDo14D23kgEFENTIBZ2AFI5/Alrxcv0AEspcG7AAnaGqC32gc73gW7/jKhuQSa4yT48iBSrcK2yD8tlZ7ysCVWIdh2t5vn9Di5kHh53ctgD/7+QANLRCVkG+xnAKxZWl8vNSFYE76VYdmzqN7JwBu9A8ZYgD3QwQQij3NIEQIA/ATBfgLpRFdS36g3RfDGaTBmFWACmAwyTmAkT0RYkIORqhCAfwZW9lvPeAhclWA6GyF0f28FxoCppJtLbwsVHJowmS0YGK8iLVbqDJCn5HGNQRSOGHQkthUxjm8WYMxN0uVFxQVzAcG2ZtfH8NVIuMEpgSom+XWp9DWaHPIJnG4ct6f7GJPXClk6FyIze8VogjSQkelEQlBnVHy7rTQ9OiUkEmlTXISLTnhFhWvJZFrfyDF24xheINNA6JzWRJrS1ZKihGAexxhtFepqT8KCpNYYnzWBUVF95vH62U9N1eqdbC4tpLGE3w5yis1886dnrzUwMF6bwLJq9a6gLUIu67ki/0VpqwRHLVyvBUafLlVZprBGI64SyPQFr4IZhPoYJlsuF76wz2cLdpNg/kWpVLqnrCP5HMO0VMvLyOGhOkveA5le2IGtFSCZqz0kC1WKnx7HoJSmyO9+3tY8wyloWZ1tLDRhYQ7wC+3Pd3nSDgyOY/zSuQgi35maeUDpMQ/d5dEoH76qjN9zyk9ksly2MJ38MokUzREwVeoW6udfjo9/+bkzFW20Xo8xHpkEQ1lGgpMFnPffx+iKSantEswrs3soSzD+FJH9B1//Kb2eDg/7FAz4D7gW+C+sr9K9zy3C3t4Hi04bjeqMznbYX4B7/+VF0iqc730w26stYMHS/LydtL5K4QewHTsyNZpjpR3zxnJvgHVMydHrOxfQdXONdbwAtsaar0a+vH4BvTQVQellL5NIkf6pTuzeSAhCF0k4uO2orJpPmNg8ULZpDctRVQVj8nZbTDnGSazt3UN5rejqVVnvoLLeXlo2WVraTMpKjO3b9JLdbuVZpKLar19jt63vlqk6g1lXB7dtKNiuUq9UBrMZttq1yMGxjk3R6tPoVhlmFvpVK8IaPn6W7bSaZcEs5Rq6nXIT2cvNVoc1FRpZCRiKwRtaFiOd0mZp2x6sRU5kP5UYU9tlV1NhwHt1THZMXUSfV/xEeZ0F34bsXiiEbQC7HBfcTWAsjrXqtktS10i2WDCGWSEXIFtjpsHouTUNxqytlAt49JbEmMH49AU0AcZINiPjMlXuKO1RAcsQibmFr76rYAzbWcWMY1qDbZbVL49kovM3xagOxrDs9mDVRJoizRYrSR0MRtGwm7n1GDAnTWGwjiSxreaKRmVbceWBBkYLgiONQYJAq2DkoLz6nmUlvAcAgNFCynB52bG+BColqGC0N7HUbSoIDJjrDiydogRaBbPZrL5yaWA8KaRddjLUaH0DBl2COm+0nQGrZLSvwDTt5GxkjNL5ECxZMEoCggd4ziT9DMbvFH79QFPyN6DfP/gdfH/wa2GH9y8YfZorPLyh6o/7QH/euHH/FfjhYSF3SvsVDG1Q18Eg1/0bN17dhz88NG5O9x3YaT6vg73CXH/c/wOD5fOnfgUDrj6pNcU/1Yb4J/rxYcFw3cV3YPRpVqsxyAU616tXNxSwAx/3sdt6H1M62J/3Fc6HxltD/AZGnt5W+xjqYH+oHQz3sdunfq0xUGdKHzN5+jegjyVzB7jG1A6mNkTcx5J+BdP6mNnT+7+P8Uofm/D0eh/zKxiaKz60aoiwKfp5rghWLQV1VxQMQBkD2AXDusWHYGQ2b6Ms6UswQ/htxgqa9NUKmk+4i+VA7rSPwGiBcxmlIsl0lPNPlIpOu40rkhkixfmnxkhauX7iQkKU9xHYPLF70k99bF75A4zg5hbhBzAydQGRfgC7sAKwZSsA8x3Y9eSldN27YJeUV8GIy4Kt2n5bcbtIOwe6dm1lyLSDU7x6bV1TW99Y6rC93JCpvTzbLiXtPgfHva/6zlvXDzJctQyblR32RJUN2ZZn22XESbrFDt2G08Ekz/cuJL0q7G81IIy3Daxme/38GuhgdrcMIOm3G7De2e7mpKYO5rgNW/cebHNZtl1KuzfV3djOBqsfANPJ+gJMoPmkQubcxJQmy3SSK3geyfxCYTcakzk7BexkABe5/OeRzC8lnIjrzAUY5vI+mbok45Nua0y9x9azizEsPf7bcQfW0VaZ3q4ySn04Qo5x5zyYHH4Hza/sRhZ3ivK0xuXK3WMyml/JLXDziMrQgAs/NMH5PinlLq0CIKMzHq8vKECWU6/Pupp5MDlfcMGHx2i3qLibKzKMPybBXW3Zwmw7ze719egq7xSbQ4b12JqDS4jquXyyHiN0MMnhPpWIIdvybLuUOq5WkIb16CpuvL+IWq6COW2X61EPyWCyQ/zJ4Dv8En4zxJ8ke7doCPn4w9ubbmm3d+Rddy7GU4p2dDDb2aIeGVnreH6eqKrlIshrCBf7xXeYHkLA2Iy9huF5ZY8UmF/l2UHurrs4uMfEzX4kR3t2pXpRevTaLspt6GKreNTgRdWWCvAPSrAFxuZhIxz8I37ob06wkl+GZyDqZXYHRtWSp9k1ydLhl1kmj+9mTJ6mfNIUOSGj733j+aylw291dgy3n9KphOeX0InUxI4+fsdi+KVumh/WQtN82tP1lrD6kx+Z6XwW209pMu3ZCQhnhWX1RFzOOt+yHwnsVra7gKei15N/70TLmPFie7SzdrrKrCuMRM+W9F4E/x3a/uFNtNnnOW3w9hxZgnZ4staEtSmnB3FZuJqVanDTSeaLE45Zb3rMN7adnl9nXm5SF3vq4orUZPF9VOiL0b5wwgSY4XUti/rFeg2s/VdVktpnbPWsUz3bbp21ts9a+bNq56y6JlXPTPNcitWyKK8zUpWVqhJ4M1P9y2MeP1Imyl30FSHKXLTMceVopEyB5C74Ms/wyxEKZoly2uvgzWX1zZ6fNQYKFChQoECBAgUKFChQIEdF3lAR4TdUROgNVQDmNzmCiaLpJ+XbH1LA6uC7UcPnY+UYKg77lcZYzVk7F0ON4TjkE2EwUR6KxVGxUgwVK+FRTaxUimIlPBg0B3IsXAmHQ2I4PO6C71F9xfa6llJjtVGl1uu1e+FeW+61x+1277zdj/TDYZkbjrrdRj3SPd+sg+OSa0y0OJ3sHzXYZ8RQEZyDf2pzU8Aqo5osy0VZHobDI3EUCoOzSj0e6cmxRjw8HGyOww2uKy63i4n9vizWxFqtXmyIoWHvfCw2irVaD7zSACm1Wq0iD0d9udcbye2iPOz3hr3hsF0xgonD4WjYHsq9ulgZibFKUe71QWMUI71YfyM83ohXKo1It7Fk39Ho9XqD4eh8A3zog/7oPNaTgYXxfhgQyL1RbFTvhUfj4fl41Gv35X4TZB+NZdEIFhKbvdpIbDTawEEM5WGoPeyLMXkUr0caEXmz194ABZ5HKssFq7TlkXw+qscASKwuj0bg51F9Q260z0egImLDUX0kN0ah5rjRHLd7PRnyKm1RA5MbYmPUA99yZRiWR43GWOzHesXK8FxsDysVkCKH5WW7jkaoWBfHjYZYFxuh8wo4VsBPwLR6pS7WGrXz0LhfB6/0x42iWCvWQ/VKI2QGQ12yKKJv8K+IkoCXhOkVEZ6jvuk9odHVwrD/z5mHnxWA+U3/A+00yG/mzvF4AAAAAElFTkSuQmCC"
+            alt="monks">
+    </a>
+</div>
+
+<br>
 <br>
 
 <!-- about the developers and program button -->
 <form style="text-align: center; font-size:24px;" method="get" action="{{ url_for('about') }}">
-    <button title="Learn about RoboTrainer's program" style="font-family:'Courier New', Courier, monospace;"
+    <button title="Learn about RoboTrainer's program" style="font-family:rockwell;"
         type="submit"><b>About</b></button>
 </form>
 
@@ -46,7 +54,7 @@
 <!-- start a new program button -->
 <form style="text-align: center; font-size:24px;" method="get" action="{{ url_for('new') }}">
     <button title="Click here to get your own personalized program"
-        style="font-family:'Courier New', Courier, monospace;" type="submit"><b>New Program</b></button>
+        style="font-family:rockwell;" type="submit"><b>New Program</b></button>
 </form>
 
 <br>
@@ -54,14 +62,14 @@
 <!-- database button -->
 <form style="text-align: center; font-size:24px;" method="get" action="{{ url_for('all') }}">
     <button title="The excersies that RoboTrainer could recommend"
-        style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Exercise Database</b></button>
+        style="font-family:rockwell;" type="submit"><b>Exercise Database</b></button>
 </form>
 
 <br>
 
 <!-- pound to kilo button -->
 <form style="text-align: center; font-size:24px;" method="get" action="{{ url_for('convert') }}">
-    <button title="Convert pounds to kilograms on the fly" style="font-family:'Courier New', Courier, monospace;"
+    <button title="Convert pounds to kilograms on the fly" style="font-family:rockwell;"
         type="submit"><b>Pound to Kilogram Converter</b></button>
 </form>
 
@@ -69,26 +77,16 @@
 
 <!-- powerlifting teams creator button -->
 <form style="text-align: center; font-size:24px;" method="get" action="{{ url_for('teams') }}">
-    <button title="Create balanced teams for powerlifting meets"
-        style="font-family:'Courier New', Courier, monospace;" type="submit"><b>Powerlifting Team Generator</b></button>
+    <button title="Create balanced teams for powerlifting meets" style="font-family:rockwell;"
+        type="submit"><b>Powerlifting Team Generator</b></button>
 </form>
 
 
 
-
-
-<div style="text-align: center;">
-    <a href="https://devpost.com/software/robotrainer#updates" target="_blank">
-        <img title="Click on me to learn about our team!"
-            style="border-radius: 45%; margin-top: 3rem;"
-            src="data:image/png;base64,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"
-            alt="monks">
-    </a>
-</div>
-
 <footer style="text-align:center; color: whitesmoke; margin-top: 1rem;">
     <a href="https://devpost.com/software/robotrainer#updates">
-        <p style="color: whitesmoke; font-family:'Courier New', Courier, monospace;  ">©2022 Moeed Chaudhry, Carlos Urbina,
+        <p style="color: whitesmoke; font-family:rockwell;  ">©2022 Moeed Chaudhry, Carlos
+            Urbina,
             Hamza Mokel</p>
     </a>
 </footer>

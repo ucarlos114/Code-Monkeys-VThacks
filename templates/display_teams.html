@@ -11,14 +11,14 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink
+        background-color: aqua
     }
 </style>
 
 <h style="padding-left: 35rem; margin-right:0;"">
-    <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+    <form style=" font-family:rockwell; text-align:center; font-size:24px;" method="get"
     action="{{ url_for('home') }}">
-    <button title="Return to the home page" style="font-family:'Courier New', Courier, monospace;"><b>Home</b></button>
+    <button title="Return to the home page" style="font-family:rockwell;"><b>Home</b></button>
     </form>
 </h>
 
@@ -27,8 +27,8 @@
 
 <br>
 
-<h1 style="font-size: 60px; font-family: 'Courier New', Courier, monospace; color: whitesmoke; text-align:center;"><b>Results:</b></h1>
-<section style="background-color: black; margin-left:2rem; float:left; font-size:50px; color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">
+<h1 style="font-size: 60px; font-family: rockwell; color: whitesmoke; text-align:center;"><b>Results:</b></h1>
+<section style="background-color: black; margin-left:2rem; float:left; font-size:50px; color:whitesmoke; font-family: rockwell; text-align: center">
     <p>Team 1:</p>
     <br>
     {% for person in best[0] %}
@@ -37,7 +37,7 @@
     <br>
     <p>Team 1 Total: {{best[1]}}</p>
 </section>
-<section style="background-color: black; float:right; font-size:50px; margin-right:2rem; color:whitesmoke; font-family: 'Courier New', Courier, monospace; text-align: center">
+<section style="background-color: black; float:right; font-size:50px; margin-right:2rem; color:whitesmoke; font-family: rockwell; text-align: center">
     <p>Team 2:</p>
     <br>
     {% for person in best[2] %}
@@ -50,6 +50,6 @@
 <br>
 <br>
 
-<h1 style="padding-top: 10%; font-size: 48px; font-family: 'Courier New', Courier, monospace; color: whitesmoke; text-align:center;">Pound difference between teams: {{best[4]}}</h1>
+<h1 style="padding-top: 10%; font-size: 48px; font-family: rockwell; color: whitesmoke; text-align:center;">Pound difference between teams: {{best[4]}}</h1>
 
 {% endblock %}

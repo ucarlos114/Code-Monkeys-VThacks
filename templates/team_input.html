@@ -12,7 +12,7 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink
+        background-color: aqua
     }
     ::placeholder {
         color:#bebebe
@@ -20,9 +20,9 @@
 </style>
 
 <h style="padding-left: 35rem; margin-right:0;"">
-    <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
+    <form style=" font-family:rockwell; text-align:center; font-size:40px;" method="get"
     action="{{ url_for('home') }}">
-    <button title="Return to the home page" style="font-family:'Courier New', Courier, monospace;"><b>Home</b></button>
+    <button title="Return to the home page" style="font-family:rockwell;"><b>Home</b></button>
     </form>
 </h>
 
@@ -32,13 +32,13 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for msg in messages %}
-<p style="color:black; text-align:center; font-size:20px; font-family: 'Courier New', Courier, monospace; ">{{msg}}</p>
+<p style="color:black; text-align:center; font-size:20px; font-family: rockwell; ">{{msg}}</p>
 {% endfor %}
 {% endif %}
 {% endwith %}
 
 <form
-    style="padding-top: 5rem; text-align: center; color: whitesmoke; font-size: 24px; font-family: 'Courier New', Courier, monospace;"
+    style="padding-top: 2%; text-align: center; color: whitesmoke; font-size: 24px; font-family: rockwell;"
     action="#" method="post">
     <section style="text-align: center;">
         <h1>Competitor 1:</h1>
@@ -47,7 +47,7 @@
             <input placeholder="e.g. Carlos" type='text' name='competitor1' />
         </h2>
 
-        <h2 style="padding-right: 8rem;">Total:
+        <h2 style="padding-right: 5.8rem;">Total:
             <input placeholder="e.g. 2000" type='text' name='total1' />
         </h2>
     </section>
@@ -62,7 +62,7 @@
             <input type='text' name='competitor{{i}}' />
         </h2>
 
-        <h2 style="padding-right: 8rem;">Total:
+        <h2 style="padding-right: 5.8rem;">Total:
             <input type='text' name='total{{i}}' />
         </h2>
     </section>

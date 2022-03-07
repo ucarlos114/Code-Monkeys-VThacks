@@ -1,14 +1,10 @@
 
 
 --------------- ~~CALCULATING~~ ---------------
-Team 1 Total = 2225
+Team 1 Total = 1275
 Carlos
-Alex
-Brenan
 ------------------------------
-Team 2 Total = 2235
+Team 2 Total = 1000
 Jacob
-Luke
-Eric
 ------------------------------
-Difference Between Team Totals: 10
+Difference Between Team Totals: 275

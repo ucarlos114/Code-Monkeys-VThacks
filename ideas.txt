@@ -1,0 +1,43 @@
+things to update on robotrainer:
+---------------------------------
+
+all button hover to aqua to be consistent
+
+navigation bar (resources, custom programs, tools, etc)
+
+more specificity on questionnaire
+(more pages) (compound variations)
+
+make sure advanced and intermediate are at least 3 days
+
+make sure program splits overlap each week
+
+bar loading calculator
+
+move team generator to own program
+
+info page (muscle parts, compound how-to's, suggested equipment)
+
+powerlifting rules meet info page/federation info
+
+injury resources
+
+highbar v lowbar info, sumo v conv
+
+pound to kilo / kilo-to-pound
+
+link to lift vault
+
+team generator teams of 3
+
+help improving (recommend different variations)
+
+rpe calculator
+
+++++++++++ QUEUE +++++++++
+
+++++++++++++++++++++++++++
+
+easter egg ronnie
+
+basic info sleep water calorie calculator

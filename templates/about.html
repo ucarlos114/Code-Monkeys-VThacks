@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-<h1 style="color:whitesmoke; font-size: 70px; font-family: 'Courier New', Courier, monospace; text-align: center">
+<h1 style="color:whitesmoke; font-size: 70px; font-family: rockwell; text-align: center">
     <u>About</u>
 </h1>
 
@@ -17,7 +17,7 @@
 
     /*Button hover state*/
     button:hover {
-        background-color: hotpink
+        background-color: aqua
     }
 
     ul>li {
@@ -27,7 +27,7 @@
 </style>
 
 <ul>
-    <li style="padding-left: 30rem; margin-right:0;"">
+    <li style="padding-left: 27%; margin-right:0;"">
         <form style=" font-family:'Courier New', Courier, monospace; text-align:center; font-size:24px;" method="get"
         action="{{ url_for('home') }}">
         <button title = "Return to the home page"style="font-family:'Courier New', Courier, monospace; margin-right:6rem;"><b>Home</b></button>
@@ -51,7 +51,7 @@
 <!--########## BUTTONS ##########-->
 
 <div
-    style="color:whitesmoke; padding-top:3rem ;font-size:20px; padding-left:25%; padding-right:25%; font-family:'Courier New', Courier, monospace; text-align: center">
+    style="color:whitesmoke; padding-top:3rem ;font-size:20px; padding-left:25%; padding-right:25%; font-family:rockwell; text-align: center">
     <h2>Inspiration</h2>
 
     <p>Our mutual love for powerlifting.</p>
@@ -99,6 +99,7 @@
     <h2>What's next for RoboTrainer</h2>
 
     <p>Delivery of a freestanding website/web application.</p>
+    <p>More features!</p>
 
     <br>
     <br>
